@@ -2,7 +2,29 @@
   "dependencies": {
     "fs": "^0.0.1-security",
     "inquirer": "^8.2.0",
-    "jest": "^27.5.0",
     "node": "^17.4.0"
-  }
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^27.5.0"
+  },
+  "name": "moore_team_profile_generator",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jamoore4579/Moore_Team_Profile_Generator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jamoore4579/Moore_Team_Profile_Generator/issues"
+  },
+  "homepage": "https://github.com/jamoore4579/Moore_Team_Profile_Generator#readme"
 }
