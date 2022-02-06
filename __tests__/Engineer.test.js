@@ -1,4 +1,3 @@
-const { hasUncaughtExceptionCaptureCallback } = require("process");
 const Engineer = require("../lib/Engineer");
 
 test("Can create a github", () => {
