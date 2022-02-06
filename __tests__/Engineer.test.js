@@ -11,3 +11,9 @@ test("Testing getGithub will return github", () => {
     const employeeInstance = new Engineer("Jason", 2, "jasonamoore@frontier.com", testGithub);
     expect(employeeInstance.getGithub()).toBe(testGithub);
 })
+
+test("Testing Role", () => {
+    const returnValue = "Engineer";
+    const employeeInstance = new Engineer("Jason", 2, "jasonamoore@frontier.com", "jamoore4579");
+    expect(employeeInstance.getRole()).toBe(returnValue);
+})
