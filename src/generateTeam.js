@@ -59,6 +59,44 @@ const generateIntern = function (intern) {
 }
 
 // call array to populate the page
+generateHTML = (data) => {
+    // array to loop through cards
+    pageArray = []
+
+    for (let i = 0; i < data.length; i++) {
+        const employee = data[i];
+        const role = employee.getRole();
+
+        // call manager role function
+        if (role === 'Manager') {
+            const managerCard = generateManager(employee);
+
+            pageArray.push(managerCard);
+        }
+
+        // call engineer role function
+        if (role === 'Engineer') {
+            const engineerCard = generateEngineer(employee)
+
+            pageArray.push(engineerCard);
+        }
+
+        //call intern role function
+        if (role === 'Intern') {
+            const internCard = generateIntern(employee)
+
+            pageArray.push(internCard);
+        }
+    }
+
+    // join the strings
+    const employeeCards = pageArray.join('')
+
+    // return to generate page
+    const generateTeam = generateTeamPage(employeeCards);
+    return generateTeam;
+
+}
 
 // generate HTML page
 const generateTeamPage = function (employeeCards) {
@@ -75,6 +113,20 @@ const generateTeamPage = function (employeeCards) {
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         </head>
         <body>
+
+            <header>
+                <nav class"navbar" id="navbar">
+                    <span class="navbar-brand mb-0 h1 w-100 text-center" id="navbar-text">Team Profile</span>
+                </nav>
+            </header>
+
+            <main>
+                <div class="container">
+                    <div class="row justify-content-center" id="team-cards">
+                        ${employeeCards}
+                    </div>
+                </div>
+            </main>
     
 
             <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
