@@ -79,7 +79,7 @@ const engineerQuestions = () => {
             message: 'What is the Engineer\'s Email Address?',
         },
         {
-            type: 'list',
+            type: 'input',
             name: 'github',
             message: 'What is the Engineer\'s GitHub username?',
         },
@@ -125,8 +125,8 @@ const internQuestions = () => {
             message: 'What is the Intern\'s Email Address?',
         },
         {
-            type: 'list',
-            name: 'github',
+            type: 'input',
+            name: 'school',
             message: 'What is the Intern\'s school?',
         },
         {
