@@ -9,6 +9,12 @@ team = [];
 
 // array of questions for user input
 const managerQuestions = () => {
+
+    console.log(`
+        ===================================================
+                    Create a Team Profile
+        ===================================================
+        `)
     // inquirer package will prompt the questions
     inquirer.prompt([
         {
