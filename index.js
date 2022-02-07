@@ -9,12 +9,6 @@ team = [];
 
 // array of questions for user input
 const managerQuestions = () => {
-    console.log(`
-        ===================================================
-                    Create a Team Profile
-        ===================================================
-        `)
-
     // inquirer package will prompt the questions
     inquirer.prompt([
         {
@@ -61,6 +55,8 @@ const managerQuestions = () => {
     });
 };
 
+
+// inquirer package will prompt the questions
 const engineerQuestions = () => {
     inquirer.prompt([
         {
@@ -102,11 +98,12 @@ const engineerQuestions = () => {
                 internQuestions();
                 break;
             default:
-            writeToFile('dist/index.html', generateTeam(team))
+                writeToFile('dist/index.html', generateTeam(team))
         }
     })
 };
 
+// inquirer package will prompt the questions
 const internQuestions = () => {
     inquirer.prompt([
         {
