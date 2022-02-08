@@ -3,6 +3,7 @@ const Manager = require('./lib/Manager')
 const Engineer = require('./lib/Engineer')
 const Intern = require('./lib/Intern')
 const fs = require('fs');
+const emailValidator = require('email-validator')
 const generateTeam = require('./src/generateTeam');
 
 team = [];
@@ -21,6 +22,12 @@ const managerQuestions = () => {
             type: 'input',
             name: 'name',
             message: 'What is the Team Manager\'s name?',
+            validate: answer => {
+                if (answer !== "") {
+                    return true;
+                }
+                return "Please enter the Manager's name"
+            }
         },
         {
             type: 'input',
@@ -31,6 +38,13 @@ const managerQuestions = () => {
             type: 'input',
             name: 'email',
             message: 'What is the Team Manager\'s Email Address?',
+            validate: (value) => {
+                if (emailValidator.validate(value)) {
+                    return true
+                } else {
+                    return 'Please enter a valid email address'
+                }
+            }
         },
         {
             type: 'input',
@@ -69,6 +83,12 @@ const engineerQuestions = () => {
             type: 'input',
             name: 'name',
             message: 'What is the Engineer\'s name?',
+            validate: answer => {
+                if (answer !== "") {
+                    return true;
+                }
+                return "Please enter the Engineer's name"
+            }
         },
         {
             type: 'input',
@@ -79,11 +99,24 @@ const engineerQuestions = () => {
             type: 'input',
             name: 'email',
             message: 'What is the Engineer\'s Email Address?',
+            validate: (value) => {
+                if (emailValidator.validate(value)) {
+                    return true
+                } else {
+                    return 'Please enter a valid email address'
+                }
+            }
         },
         {
             type: 'input',
             name: 'github',
             message: 'What is the Engineer\'s GitHub username?',
+            validate: answer => {
+                if (answer !== "") {
+                    return true;
+                }
+                return "Please enter the Engineer's GitHub username"
+            }
         },
         {
             type: 'list',
@@ -116,6 +149,12 @@ const internQuestions = () => {
             type: 'input',
             name: 'name',
             message: 'What is the Intern\'s name?',
+            validate: answer => {
+                if (answer !== "") {
+                    return true;
+                }
+                return "Please enter the Intern's name"
+            }
         },
         {
             type: 'input',
@@ -126,11 +165,24 @@ const internQuestions = () => {
             type: 'input',
             name: 'email',
             message: 'What is the Intern\'s Email Address?',
+            validate: (value) => {
+                if (emailValidator.validate(value)) {
+                    return true
+                } else {
+                    return 'Please enter a valid email address'
+                }
+            }
         },
         {
             type: 'input',
             name: 'school',
             message: 'What is the Intern\'s school?',
+            validate: answer => {
+                if (answer !== "") {
+                    return true;
+                }
+                return "Please enter the Intern's School"
+            }
         },
         {
             type: 'list',
