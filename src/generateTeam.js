@@ -1,99 +1,99 @@
-const generateTeam = team => {
-    // create Manager Card
-    const generateManager = function (manager) {
-        return `
-        <div class="col-4 mt-4">
-            <div class="card">
-                <div class="card-header bg-success text-warning">
-                    <h2 class="card-title">${manager.name}</h2>
-                    <h3 class="card-title"><ion-icon name="people-outline"></ion-icon>  ${manager.getRole()}</h3>
-                </div>
+const Manager = require('../lib/Manager');
+const Engineer = require('../lib/Engineer');
+const Intern = require('../lib/Intern');
 
-                <div class="card-body bg-light">
-                    <ul class="list-group">
-                        <li class="list-group-item">ID: ${manager.getID()}</li>
-                        <li class="list-group-item">Email: <a href="mailto:${manager.email}">${manager.email}</a></li>
-                        <li class="list-group-item">Office Number: ${manager.officeNumber}</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        `;
+function generateCards(team) {
+    let cards = []
+    for(let i = 0; i < team.length; i++) {
+        const teamArray = team[i];
+        switch(teamArray.getRole()) {
+            case 'Manager':
+                const manager = new Manager(teamArray.name, teamArray.id, teamArray.email, teamArray.officeNumber);
+                cards.push(generateManagerCard(manager));
+                break;
+            case 'Engineer':
+                const engineer = new Engineer(teamArray.name, teamArray.id, teamArray.email, teamArray.github);
+                cards.push(generateEngineerCard(engineer));
+                break;
+            case 'Intern':
+                const intern = new Intern(teamArray.name, teamArray.id, teamArray.email, teamArray.school);
+                cards.push(generateInternCard(intern));
+                break;
+        }
     }
-
-    // create Engineer Card
-    const generateEngineer = function (engineer) {
-        return `
-        <div class="col-4 my-4">
-            <div class="card">
-                <div class="card-header bg-success text-warning">
-                    <h2 class="card-title">${engineer.name}</h2>
-                    <h3 class="card-title"><ion-icon name="save-outline"></ion-icon>  ${engineer.getRole()}</h3>
-                </div>
-
-                <div class="card-body bg-light">
-                    <ul class="list-group">
-                        <li class="list-group-item">ID: ${engineer.getID()}</li>
-                        <li class="list-group-item">Email: <a href="mailto:${engineer.email}">${engineer.email}</a></li>
-                        <li class="list-group-item">GitHub: <a href="https://github.com/${engineer.github}">${engineer.Github}</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        `;
-    }
-
-    // create Intern Card
-    const generateIntern = function (intern) {
-        return `
-        <div class="col-4 my-4">
-            <div class="card">
-                <div class="card-header bg-success text-warning">
-                    <h2 class="card-title">${intern.name}</h2>
-                    <h3 class="card-title"><ion-icon name="library-outline"></ion-icon>  ${intern.getRole()}</h3>
-                </div>
-
-                <div class="card-body bg-light">
-                    <ul class="list-group">
-                        <li class="list-group-item">ID: ${intern.getID()}</li>
-                        <li class="list-group-item">Email: <a href="mailto:${intern.email}">${intern.email}</a></li>
-                        <li class="list-group-item">School: ${intern.School}</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        `;
-    };
-
-    // call array to populate the page
-    const html = [];
-
-    html.push(team
-        .filter(employee => employee.getRole() === "Manger")
-        .map(manager => generateManager(manager))
-        .join("")
-    );
-
-    html.push(team
-        .filter(employee => employee.getRole() === "Engineer")
-        .map(engineer => generateEngineer(engineer))
-        .join("")
-    );
-
-    html.push(team
-        .filter(employee => employee.getRole() === "Intern")
-        .map(intern => generateIntern(intern))
-        .join("")
-    );
-
-    return html.join("");
-
-
+    return cards.join('')
 }
 
 
+// create Manager Card
+let generateManagerCard = function (Manager) {
+    return `
+                <div class="col-4 mt-4">
+                    <div class="card">
+                        <div class="card-header bg-success text-warning">
+                            <h2 class="card-title">${Manager.name}</h2>
+                            <h3 class="card-title"><ion-icon name="people-outline"></ion-icon>  ${Manager.getRole()}</h3>
+                        </div>
+
+                        <div class="card-body bg-light">
+                            <ul class="list-group">
+                                <li class="list-group-item">ID: ${Manager.getID()}</li>
+                                <li class="list-group-item">Email: <a href="mailto:${Manager.email}">${Manager.email}</a></li>
+                                <li class="list-group-item">Office Number: ${Manager.officeNumber}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+    `;
+}
+
+// create Engineer Card
+const generateEngineerCard = function (Engineer) {
+    return `
+                <div class="col-4 my-4">
+                    <div class="card">
+                        <div class="card-header bg-success text-warning">
+                            <h2 class="card-title">${Engineer.name}</h2>
+                            <h3 class="card-title"><ion-icon name="save-outline"></ion-icon>  ${Engineer.getRole()}</h3>
+                        </div>
+
+                        <div class="card-body bg-light">
+                            <ul class="list-group">
+                                <li class="list-group-item">ID: ${Engineer.getID()}</li>
+                                <li class="list-group-item">Email: <a href="mailto:${Engineer.email}">${Engineer.email}</a></li>
+                                <li class="list-group-item">GitHub: <a href="https://github.com/${Engineer.getGithub()}">${Engineer.getGithub()}</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+    `;
+}
+
+// create Intern Card
+const generateInternCard = function (Intern) {
+    return `
+                <div class="col-4 my-4">
+                    <div class="card">
+                        <div class="card-header bg-success text-warning">
+                            <h2 class="card-title">${Intern.name}</h2>
+                            <h3 class="card-title"><ion-icon name="library-outline"></ion-icon>  ${Intern.getRole()}</h3>
+                        </div>
+
+                        <div class="card-body bg-light">
+                            <ul class="list-group">
+                                <li class="list-group-item">ID: ${Intern.getID()}</li>
+                                <li class="list-group-item">Email: <a href="mailto:${Intern.email}">${Intern.email}</a></li>
+                                <li class="list-group-item">School: ${Intern.getSchool()}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+    `;
+};
+
+
 // generate HTML page
-module.exports = team => {
+function generateTeam(team) {
 
     return`
     <!DOCTYPE html>
@@ -119,7 +119,7 @@ module.exports = team => {
 
             <div class="container">
                 <div class="row justify-content-center">
-                        ${generateTeam(team)}
+                        ${generateCards(team)}
                 </div>
             </div>
     
@@ -134,3 +134,5 @@ module.exports = team => {
 
     `;
 }
+
+module.exports = generateTeam;
