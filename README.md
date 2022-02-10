@@ -37,10 +37,10 @@
 
   Screenshot of HTML file:
 
-  <img src ='./src/Team_Screen_Shot.PNG' alt='Picture of example HTML file with team roster displayed'>
+  <img src ='./src/img/Team_Screen_Shot.PNG' alt='Picture of example HTML file with team roster displayed'>
 
   ## Demonstration Video
-
+  View the link: [Screencastify] https://drive.google.com/file/d/1ClU-Wt9AlNOv8HfwfwLXGAGKDivTRy7o/view?usp=sharing
   ## Test
 
   View the link: [Screencastify] https://drive.google.com/file/d/1ClU-Wt9AlNOv8HfwfwLXGAGKDivTRy7o/view?usp=sharing
