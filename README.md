@@ -37,7 +37,7 @@
 
   Screenshot of HTML file:
 
-  <img src ='src\Team_Screen_Shot.PNG' alt='Picture of example HTML file with team roster displayed'>
+  <img src ='./src/Team_Screen_Shot.PNG' alt='Picture of example HTML file with team roster displayed'>
 
   ## Demonstration Video
 
